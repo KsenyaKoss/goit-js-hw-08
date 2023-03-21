@@ -4,25 +4,81 @@ const form = document.querySelector('.feedback-form');
 form.addEventListener('input', throttle(saveInput, 500));
 
 if(localStorage.getItem('feedback-form-state')){
-    form.elements.email.value = JSON.parse(localStorage.getItem('feedback-form-state')).email;
-    form.elements.message.value = JSON.parse(localStorage.getItem('feedback-form-state')).message;
+        form.elements.email.value = JSON.parse(localStorage.getItem('feedback-form-state')).email;
+        form.elements.message.value = JSON.parse(localStorage.getItem('feedback-form-state')).message;
+    }
+
+const feedbackForm = {}
+
+function saveInput(ev){
+feedbackForm[ev.target.name] =ev.target.value;
+localStorage.setItem("feedback-form-state", JSON.stringify(feedbackForm));
 }
 
-const feedbackForm = {};
-
-function saveInput(ev) {
-    ev.preventDefault();
-    feedbackForm.email = ev.currentTarget.email.value,
-    feedbackForm.message = ev.currentTarget.message.value,
-    localStorage.setItem("feedback-form-state", JSON.stringify(feedbackForm));
-}
 
 form.addEventListener('submit', (ev) =>{
-    ev.preventDefault();
-    console.log(JSON.parse(localStorage.getItem('feedback-form-state')));
-    localStorage.clear();
-    form.reset(); 
-})
+        ev.preventDefault();
+        console.log(JSON.parse(localStorage.getItem('feedback-form-state')));
+        localStorage.clear();
+        form.reset(); 
+    })
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// if(localStorage.getItem('feedback-form-state')){
+//     form.elements.email.value = JSON.parse(localStorage.getItem('feedback-form-state')).email;
+//     form.elements.message.value = JSON.parse(localStorage.getItem('feedback-form-state')).message;
+// }
+
+// const feedbackForm = {};
+
+// function saveInput(ev) {
+//     ev.preventDefault();
+//     feedbackForm.email = ev.currentTarget.email.value,
+//     feedbackForm.message = ev.currentTarget.message.value,
+//     localStorage.setItem("feedback-form-state", JSON.stringify(feedbackForm));
+// }
+
+// form.addEventListener('submit', (ev) =>{
+//     ev.preventDefault();
+//     console.log(JSON.parse(localStorage.getItem('feedback-form-state')));
+//     localStorage.clear();
+//     form.reset(); 
+// })
 
 
 
